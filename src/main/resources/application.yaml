@@ -1,0 +1,16 @@
+app:
+  name: sample-api
+  henesis-wallet:
+    url: http://localhost:8080
+    access-token:
+    api-secret:
+    master-wallet-id:
+    master-wallet-address:
+    passphrase: passphrase
+    enclave-url: http://localhost:3000
+  contracts:
+    ownableAddress: "0x1111111111111111111111111111111111111111"
+  rpcEndpoint:
+
+server:
+  port: 8085

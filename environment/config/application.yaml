@@ -1,0 +1,17 @@
+app:
+  name: sample-api
+  henesis-wallet:
+    url: http://test.wallet.henesis.io
+    access-token:
+    api-secret:
+    master-wallet-id:
+    master-wallet-address:
+    passphrase: sample
+    enclave-url: http://sdk-enclave:3000
+  contracts:
+    ownableAddress: Enter Ownable Contract address here
+  rpcEndpoint: Enter blockchain node rpc endpoint here
+
+server:
+  port: 8085
+

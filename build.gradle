@@ -1,0 +1,62 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+group = 'io.haechi.sample'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compile group: 'org.springframework.data', name: 'spring-data-commons', version: '2.2.6.RELEASE'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3'
+    compile group: 'com.google.guava', name: 'guava', version: '23.0'
+
+    //// ref: https://github.com/web3j/web3j/issues/1167
+    //// https://github.com/web3j/web3j/commit/92ecdb7288df61faad106a95c6a545bf9734152c
+    compile 'com.squareup.okhttp3:okhttp:4.3.1'
+    compile 'com.squareup.okhttp3:okhttp-ws:3.4.2'
+    // web3
+    implementation ('org.web3j:core:4.5.12') {
+        exclude group: 'org.web3j', module: 'crypto:4.5.12'
+    }
+    // caver
+    implementation 'com.klaytn.caver:core:1.0.2'
+
+    implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.2'
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-json-org', version: '2.9.8'
+
+    // docs
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+    
+    compile 'structlog4j:structlog4j-api:1.0.0'
+    compile 'structlog4j:structlog4j-json:1.0.0'
+    compile group: 'org.springframework', name: 'spring-aspects', version: '5.2.5.RELEASE'
+}
+
+test {
+    useJUnitPlatform()
+}

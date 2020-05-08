@@ -1,0 +1,27 @@
+version: '3.1'
+services:
+  sdk-enclave:
+    image: haechi/sdk-enclave:latest
+    environment:
+      BASE_URL: http://test.wallet.henesis.io/api/v1
+    ports:
+      - 3000:3000
+    expose:
+      - 3000
+    entrypoint:
+      - yarn
+    command: start
+  sample-api:
+    image: sample-api:latest
+    ports:
+      - 8085:8085
+    expose:
+      - 8085
+    volumes:
+      - ./config:/config
+    entrypoint:
+      - java
+      - -jar
+      - -Dspring.config.location=/config/application.yaml
+      - -Dspring.profiles.active=default
+      - sample-api.jar
